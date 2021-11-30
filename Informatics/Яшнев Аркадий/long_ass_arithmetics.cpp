@@ -94,14 +94,20 @@ std::istream &operator>>(std::istream &in, BigInt &n) {
 
     return in;
 }
+
 void BigInt::add(BigInt const &other) {
-    size = (size > other.size) ? size : other.size;
-    for(size_t i = 0; i != size; ++i) {
+    if(size < other.size) {
+        num.resize(other.num.size());
+        size = other.size;
+    }
+
+    size_t end = (size > other.size) ? other.size : size;
+    for(size_t i = 0; i != end; ++i) {
         num[i] += other.num[i];
         num[i + 1] += num[i] / BASE;
         if(num[i] / BASE) {
             if(i + 1 >= size) {
-                if(size >= num.size() - 1) {
+                if(num.size() - 1 >= size) {
                     num.push_back(0);
                 }
                 ++size;
