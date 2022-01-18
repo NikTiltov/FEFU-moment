@@ -28,19 +28,18 @@ int main() {
             first[i] = max(wall[i + 1], max(wall[i], wall[i + 2]) + 1);
             counter1 += first[i];
             counter2 += second[i];
-        }
-        else {
+        } else {
             second[i] = max(wall[i + 1], max(wall[i], wall[i + 2]) + 1);
             counter1 += first[i];
             counter2 += second[i];
         }
     }
+    
     if (counter1 < counter2) {
         for (int i = 0; i < size; ++i) {
             fprintf(fout, "%d ", first[i]);
         }
-    }
-    else {
+    } else {
         for (int i = 0; i < size; ++i) {
             fprintf(fout, "%d ", second[i]);
         }
