@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//Тесты в этой задаче поменялись так что она больше не проходит к сожалению
+
 typedef struct deque_int {
     int val;
     struct deque_int *next;
